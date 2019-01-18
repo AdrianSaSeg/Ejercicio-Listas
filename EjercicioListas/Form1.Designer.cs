@@ -85,6 +85,7 @@
             this.BotonEliminar.TabIndex = 3;
             this.BotonEliminar.Text = "Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = true;
+            this.BotonEliminar.Click += new System.EventHandler(this.BotonEliminar_Click);
             // 
             // BotonBuscar
             // 
@@ -95,6 +96,7 @@
             this.BotonBuscar.TabIndex = 4;
             this.BotonBuscar.Text = "Buscar";
             this.BotonBuscar.UseVisualStyleBackColor = true;
+            this.BotonBuscar.Click += new System.EventHandler(this.BotonBuscar_Click);
             // 
             // textBoxID
             // 
@@ -195,6 +197,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "AppListas";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
