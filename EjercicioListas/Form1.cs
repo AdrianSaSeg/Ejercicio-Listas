@@ -104,17 +104,34 @@ namespace EjercicioListas
 
         private void BotonBuscar_Click(object sender, EventArgs e)
         {
-            if (ListaPersonas.ToList<Personas>().Exists(x => x.ID == Convert.ToInt32(textBoxID.Text)))
+            /////////// MI FORMA DE HACERLO /////////////
+
+            /*if (ListaPersonas.ToList<Personas>().Exists(x => x.ID == Convert.ToInt32(textBoxID.Text)))
             {
                 dataGridView1.ClearSelection();
-                //dataGridView1.Rows[Convert.ToInt32(textBoxID.Text) - 1].DefaultCellStyle.BackColor = Color.LightBlue;
                 dataGridView1.Rows[Convert.ToInt32(textBoxID.Text) - 1].Selected = true;
                 MessageBox.Show($"El usuario con ID = {textBoxID.Text} se encuentra en la lista");
             }
             else
             {
                 MessageBox.Show("No se encuentra ningún usuario con el ID seleccionado en la lista");
-            }
+            }*/
+
+            //////////// FORMA DEL PROFESOR /////////////
+
+            //buscamos los elementos de la lista que reúnan las siguientes 
+            //caracteristicas y las guardamos en una variable.
+            //de éste modo podemos filtrar por todos los campos.
+            var resultado = ListaPersonas.ToList<Personas>().FindAll(x =>                                  
+                                x.ID.ToString().Contains(textBoxID.Text) &&
+                                x.Nombre.Contains(textBoxNombre.Text) &&
+                                x.Email.Contains(textBoxEmail.Text) &&
+                                x.Telefono.Contains(textBoxTelefono.Text)
+                                );
+            
+            //apunto el origen de datos del datagrid al resultado
+            dataGridView1.DataSource = resultado;
+
         }
     }
 }
