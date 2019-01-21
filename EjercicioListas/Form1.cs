@@ -74,6 +74,7 @@ namespace EjercicioListas
                     MessageBox.Show("Error. El campo Telefono no puede quedar vacío");
                 }
             }
+
             catch (Exception ex)
             {
                  MessageBox.Show(ex.Message + " Debes introducir un número en el campo ID");                            
@@ -103,7 +104,17 @@ namespace EjercicioListas
 
         private void BotonBuscar_Click(object sender, EventArgs e)
         {
-            ListaPersonas.ToList<Personas>().Find(x => x.ID == Convert.ToInt32(textBoxID.Text));
+            if (ListaPersonas.ToList<Personas>().Exists(x => x.ID == Convert.ToInt32(textBoxID.Text)))
+            {
+                dataGridView1.ClearSelection();
+                //dataGridView1.Rows[Convert.ToInt32(textBoxID.Text) - 1].DefaultCellStyle.BackColor = Color.LightBlue;
+                dataGridView1.Rows[Convert.ToInt32(textBoxID.Text) - 1].Selected = true;
+                MessageBox.Show($"El usuario con ID = {textBoxID.Text} se encuentra en la lista");
+            }
+            else
+            {
+                MessageBox.Show("No se encuentra ningún usuario con el ID seleccionado en la lista");
+            }
         }
     }
 }
