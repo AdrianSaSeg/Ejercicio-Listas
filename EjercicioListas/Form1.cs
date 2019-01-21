@@ -54,16 +54,35 @@ namespace EjercicioListas
                     Telefono = textBoxTelefono.Text
                 });
 
+                if (string.IsNullOrEmpty(textBoxID.Text))
+                {
+                    MessageBox.Show("Error. El campo ID no puede quedar vacío");
+                }
+
+                if (string.IsNullOrEmpty(textBoxNombre.Text))
+                {
+                    MessageBox.Show("Error. El campo Nombre no puede quedar vacío");
+                }
+
+                if (string.IsNullOrEmpty(textBoxEmail.Text))
+                {
+                    MessageBox.Show("Error. El campo Email no puede quedar vacío");
+                }
+
+                if (string.IsNullOrEmpty(textBoxTelefono.Text))
+                {
+                    MessageBox.Show("Error. El campo Telefono no puede quedar vacío");
+                }
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                 MessageBox.Show(ex.Message + " Debes introducir un número en el campo ID");                            
             }            
         }
 
         private void BotonEliminar_Click(object sender, EventArgs e)
         {
+            /////////////OTRA FORMA DE HACERLO//////////////////////
             //Elimino un elemento de la lista utilizando su ID, se pone el -1 porque RemoveAt busca por el indice
             //ListaPersonas.RemoveAt(Convert.ToInt32(textBoxID.Text) - 1);
 
